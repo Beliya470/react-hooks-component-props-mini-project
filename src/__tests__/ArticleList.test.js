@@ -28,7 +28,10 @@ test("renders a <main> element", () => {
   expect(container.querySelector("main")).toBeInTheDocument();
 });
 
-test("renders a Article component for each post passed as a prop", () => {
+test("renders an Article component for each post passed as a prop", () => {
   const { container } = render(<ArticleList posts={posts} />);
-  expect(container.querySelector("main").children).toHaveLength(3);
+  const articleElements = container.querySelectorAll("article");
+  expect(articleElements).toHaveLength(posts.length);
+
+  // You can also add additional assertions to check if the correct content is rendered for each article, if needed.
 });
